@@ -9,6 +9,7 @@ import {
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
+import ProfilePage from "./pages/ProfilePage";
 import Page403 from "./pages/Page403";
 import Page404 from "./pages/Page404";
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUpPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
       },
       {
         path: "/no-access",
