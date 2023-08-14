@@ -13,6 +13,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Page403 from "./pages/Page403";
 import Page404 from "./pages/Page404";
 import UserListPage from "./pages/admin/UserListPage";
+import UserDetail from "./pages/admin/UserDetail";
 
 const router = createBrowserRouter([
   {
@@ -54,8 +55,12 @@ const router = createBrowserRouter([
             element: <Navigate to="/admin/user-list" replace />,
           },
           {
-            path: "user-list",
+            path: "user",
             element: <UserListPage />,
+          },
+          {
+            path: "user/:id",
+            element: <UserDetail />,
           },
         ],
       },
