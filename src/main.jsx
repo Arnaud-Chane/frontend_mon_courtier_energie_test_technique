@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProfilePage from "./pages/ProfilePage";
+import TaskDetailPage from "./pages/TaskDetailPage";
 import Page403 from "./pages/Page403";
 import Page404 from "./pages/Page404";
 import UserListPage from "./pages/admin/UserListPage";
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/task/:id",
+        element: <TaskDetailPage />,
       },
       {
         path: "/no-access",
