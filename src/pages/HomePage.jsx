@@ -5,6 +5,7 @@ import { Button, Input } from "antd";
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
   const [taskTitle, setTaskTitle] = useState("");
+  const [fetchData, setFetchData] = useState(false);
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -18,16 +19,33 @@ function HomePage() {
       }
     };
     fetchTask();
-  }, []);
+  }, [fetchData]);
 
   const handleOnChange = (e) => {
     e.preventDefault();
     setTaskTitle(e.target.value);
   };
 
-  const handleSubmit = () => {
-    console.info(taskTitle);
-    setTaskTitle("");
+  const handleSubmit = async () => {
+    const body = {
+      title: taskTitle,
+      detail: "",
+      user_id: 1,
+      task_done: 0,
+      task_archived: 0,
+    };
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/tasks`,
+        body
+      );
+      if (response.status === 201) {
+        setTaskTitle("");
+        setFetchData(!fetchData);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
