@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function UserDetail() {
-  return (
-    <div>UserDetail</div>
-  )
+  return <div>UserDetail</div>;
 }
 
-export default UserDetail
+export default UserDetail;
