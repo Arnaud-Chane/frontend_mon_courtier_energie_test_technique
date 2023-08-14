@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Input } from "antd";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
+  const [taskTitle, setTaskTitle] = useState("");
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -18,8 +20,21 @@ function HomePage() {
     fetchTask();
   }, []);
 
+  const handleOnChange = (e) => {
+    e.preventDefault();
+    setTaskTitle(e.target.value);
+  };
+
   return (
     <div className="HomePage">
+      <div className="input-task">
+        <Input
+          value={taskTitle}
+          placeholder="Basic usage"
+          onChange={handleOnChange}
+          className="task-input"
+        />
+      </div>
       <ul className="task-list">
         {taskList.map((task) => {
           return (
