@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Page403 from "./pages/Page403";
+import Page404 from "./pages/Page404";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/no-access",
         element: <Page403 />,
+      },
+      {
+        path: "*",
+        element: <Page404 />,
       },
     ],
   },
