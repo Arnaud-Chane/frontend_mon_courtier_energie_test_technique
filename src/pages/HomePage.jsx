@@ -5,6 +5,7 @@ import { Button, Input } from "antd";
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
   const [taskTitle, setTaskTitle] = useState("");
+  const [fetchData, setFetchData] = useState(false);
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -18,7 +19,7 @@ function HomePage() {
       }
     };
     fetchTask();
-  }, []);
+  }, [fetchData]);
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -40,6 +41,7 @@ function HomePage() {
       );
       if (response.status === 201) {
         setTaskTitle("");
+        setFetchData(!fetchData);
       }
     } catch (err) {
       console.error(err);
