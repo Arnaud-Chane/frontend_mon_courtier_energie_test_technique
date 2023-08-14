@@ -12,6 +12,7 @@ import SignUpPage from "./pages/SignUpPage";
 import ProfilePage from "./pages/ProfilePage";
 import Page403 from "./pages/Page403";
 import Page404 from "./pages/Page404";
+import UserListPage from "./pages/admin/UserListPage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,19 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <Page404 />,
+      },
+      {
+        path: "/admin",
+        children: [
+          {
+            index: true,
+            element: <Navigate to="/admin/user-list" replace />,
+          },
+          {
+            path: "user-list",
+            element: <UserListPage />,
+          },
+        ],
       },
     ],
   },
