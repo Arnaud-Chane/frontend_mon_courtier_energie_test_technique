@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="/admin/user-list" replace />,
+            element: <Navigate to="/admin/user" replace />,
           },
           {
             path: "user",
