@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Input } from "antd";
+import { Button, Input } from "antd";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -25,6 +25,11 @@ function HomePage() {
     setTaskTitle(e.target.value);
   };
 
+  const handleSubmit = () => {
+    console.info(taskTitle);
+    setTaskTitle("");
+  };
+
   return (
     <div className="HomePage">
       <div className="input-task">
@@ -34,6 +39,11 @@ function HomePage() {
           onChange={handleOnChange}
           className="task-input"
         />
+      </div>
+      <div className="add-btn-task">
+        <Button type="submit" onClick={() => handleSubmit()}>
+          +
+        </Button>
       </div>
       <ul className="task-list">
         {taskList.map((task) => {
