@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Page403() {
-  return (
-    <div>Page403</div>
-  )
+  return <div>Page403</div>;
 }
 
-export default Page403
+export default Page403;

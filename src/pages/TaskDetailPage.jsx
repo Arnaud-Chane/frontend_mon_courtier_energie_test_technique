@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function TaskDetailPage() {
-  return (
-    <div>TaskDetailPage</div>
-  )
+  return <div>TaskDetailPage</div>;
 }
 
-export default TaskDetailPage
+export default TaskDetailPage;
