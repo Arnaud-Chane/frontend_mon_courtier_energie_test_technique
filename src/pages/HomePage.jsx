@@ -48,6 +48,19 @@ function HomePage() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}`
+      );
+      if (response.status === 204) {
+        setFetchData(!fetchData);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="HomePage">
       <div className="input-task">
@@ -68,6 +81,14 @@ function HomePage() {
           return (
             <li className="task" key={task.task_id}>
               <div className="task-to-edit">{task.title}</div>
+              <div className="delete-btn-task">
+                <Button
+                  type="submit"
+                  onClick={() => handleDelete(task.task_id)}
+                >
+                  delete
+                </Button>
+              </div>
             </li>
           );
         })}
