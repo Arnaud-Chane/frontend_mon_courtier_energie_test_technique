@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Input, Checkbox } from "antd";
+
 import EditIcon from "../assets/images/edit-icon.svg";
+import InputPriority from "../components/InputPriority";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -88,11 +90,6 @@ function HomePage() {
     }
   };
 
-  const handleFocusOut = (taskPriority) => {
-    console.info(taskPriority);
-    // Perform any desired actions here
-  };
-
   return (
     <div className="HomePage">
       <div className="input-task">
@@ -112,10 +109,7 @@ function HomePage() {
         {taskList.map((task) => {
           return (
             <li className="task" key={task.task_id}>
-              <Input
-                value={task.task_priority}
-                onBlur={() => handleFocusOut(task.task_priority)}
-              />
+              <InputPriority task={task} />
               <Checkbox
                 checked={task.task_done}
                 onChange={() => handleChecked(task)}
