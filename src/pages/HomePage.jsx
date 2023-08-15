@@ -35,6 +35,7 @@ function HomePage() {
       user_id: 1,
       task_done: 0,
       task_archived: 0,
+      task_priority: taskList.length + 1,
     };
     try {
       const response = await axios.post(
