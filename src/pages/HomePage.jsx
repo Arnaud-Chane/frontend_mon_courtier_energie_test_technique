@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Input } from "antd";
+import { Button, Input, Checkbox } from "antd";
+import "./home.css";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -61,6 +62,30 @@ function HomePage() {
     }
   };
 
+  const handleChecked = async (tasked) => {
+    const mapped = taskList.map((task) => {
+      return task.task_id === Number(tasked.task_id)
+        ? { ...task, task_done: !task.task_done }
+        : { ...task };
+    });
+    setTaskList(mapped);
+    const body = tasked;
+    body.task_done = !tasked.task_done;
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/is-done/${
+          tasked.task_id
+        }`,
+        body
+      );
+      if (response.status === 204) {
+        setFetchData(!fetchData);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="HomePage">
       <div className="input-task">
@@ -80,7 +105,17 @@ function HomePage() {
         {taskList.map((task) => {
           return (
             <li className="task" key={task.task_id}>
-              <div className="task-to-edit">{task.title}</div>
+              <Checkbox
+                checked={task.task_done}
+                onChange={() => handleChecked(task)}
+              />
+              <div
+                className={
+                  task.task_done ? "task-to-edit strike" : "task-to-edit"
+                }
+              >
+                {task.title}
+              </div>
               <div className="delete-btn-task">
                 <Button
                   type="submit"
