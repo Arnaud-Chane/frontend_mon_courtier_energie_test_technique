@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Input, Checkbox } from "antd";
+
 import EditIcon from "../assets/images/edit-icon.svg";
+import InputPriority from "../components/InputPriority";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -23,6 +25,10 @@ function HomePage() {
     fetchTask();
   }, [fetchData]);
 
+  function compareByPriority(a, b) {
+    return a.task_priority - b.task_priority;
+  }
+
   const handleOnChange = (e) => {
     e.preventDefault();
     setTaskTitle(e.target.value);
@@ -35,6 +41,7 @@ function HomePage() {
       user_id: 1,
       task_done: 0,
       task_archived: 0,
+      task_priority: taskList.length + 1,
     };
     try {
       const response = await axios.post(
@@ -103,9 +110,14 @@ function HomePage() {
         </Button>
       </div>
       <ul className="task-list">
-        {taskList.map((task) => {
+        {taskList.sort(compareByPriority).map((task) => {
           return (
             <li className="task" key={task.task_id}>
+              <InputPriority
+                task={task}
+                setFetchData={setFetchData}
+                fetchData={fetchData}
+              />
               <Checkbox
                 checked={task.task_done}
                 onChange={() => handleChecked(task)}
