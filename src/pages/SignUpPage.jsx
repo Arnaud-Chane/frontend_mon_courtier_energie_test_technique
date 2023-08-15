@@ -1,4 +1,4 @@
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 
 function SignUpPage() {
   const onFinish = (values) => {
@@ -65,6 +65,17 @@ function SignUpPage() {
           ]}
         >
           <Input.Password />
+        </Form.Item>
+
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Créer le compte
+          </Button>
         </Form.Item>
       </Form>
     </div>
