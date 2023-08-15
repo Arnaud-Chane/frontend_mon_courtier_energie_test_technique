@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Input, Checkbox } from "antd";
+import "./home.css";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -61,6 +62,15 @@ function HomePage() {
     }
   };
 
+  const handleChecked = async (tasked) => {
+    const mapped = taskList.map((task) => {
+      return task.task_id === Number(tasked.task_id)
+        ? { ...task, task_done: !task.task_done }
+        : { ...task };
+    });
+    setTaskList(mapped);
+  };
+
   return (
     <div className="HomePage">
       <div className="input-task">
@@ -82,9 +92,15 @@ function HomePage() {
             <li className="task" key={task.task_id}>
               <Checkbox
                 checked={task.task_done}
-                onChange={() => console.info(task.task_done)}
+                onChange={() => handleChecked(task)}
               />
-              <div className="task-to-edit">{task.title}</div>
+              <div
+                className={
+                  task.task_done ? "task-to-edit strike" : "task-to-edit"
+                }
+              >
+                {task.title}
+              </div>
               <div className="delete-btn-task">
                 <Button
                   type="submit"
