@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Input, Checkbox } from "antd";
-import "./home.css";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
