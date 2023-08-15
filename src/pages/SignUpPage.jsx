@@ -1,11 +1,25 @@
 import { Button, Form, Input } from "antd";
+import axios from "axios";
 
 function SignUpPage() {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const onFinish = async (values) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users`,
+        values
+      );
+      if (response.status === 201) {
+        console.info(
+          "Données enregistrées avec succès dans la base de données !"
+        );
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
+
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.info("Failed:", errorInfo);
   };
 
   return (
