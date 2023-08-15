@@ -6,6 +6,7 @@ import { Input } from "antd";
 function TaskDetailPage() {
   const { id } = useParams();
   const [taskTitle, setTaskTitle] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
 
   useEffect(() => {
     axios
@@ -13,6 +14,7 @@ function TaskDetailPage() {
       .then((response) => {
         const taskInfo = response.data;
         setTaskTitle(taskInfo.title);
+        setTaskDescription(taskInfo.detail);
       })
       .catch((error) => {
         console.error(error);
@@ -21,7 +23,17 @@ function TaskDetailPage() {
 
   return (
     <div className="TaskDetailPage">
-      <Input value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} />
+      <div className="task-title">
+        <Input
+          value={taskTitle}
+          onChange={(e) => setTaskTitle(e.target.value)}
+        />
+      </div>
+      <div className="task-description">
+      <Input
+          value={taskDescription}
+        />
+      </div>
     </div>
   );
 }
