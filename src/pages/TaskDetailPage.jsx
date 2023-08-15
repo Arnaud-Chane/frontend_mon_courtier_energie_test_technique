@@ -21,6 +21,35 @@ function TaskDetailPage() {
       });
   }, [id]);
 
+  const handleSubmit = async () => {
+    const body = {
+      title: taskTitle,
+      detail: taskDescription,
+    };
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}`,
+        body
+      );
+      if (response.status === 204) {
+        console.info("success title");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}/detail`,
+        body
+      );
+      if (response.status === 204) {
+        console.info("success detail");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="TaskDetailPage">
       <div className="task-title">
@@ -36,7 +65,7 @@ function TaskDetailPage() {
         />
       </div>
       <div className="update-btn-task">
-        <Button type="submit" onClick={() => console.log("hello")}>
+        <Button type="submit" onClick={() => handleSubmit()}>
           Mettre à jour
         </Button>
       </div>
