@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Input, Checkbox } from "antd";
 import EditIcon from "../assets/images/edit-icon.svg";
@@ -117,7 +118,9 @@ function HomePage() {
                 {task.title}
               </div>
               <div className="delete-btn-task">
-                <img className="edit-icon-homepage" src={EditIcon} alt="" />
+                <Link to={`/task/${task.task_id}`}>
+                  <img className="edit-icon-homepage" src={EditIcon} alt="" />
+                </Link>
                 <Button
                   type="submit"
                   onClick={() => handleDelete(task.task_id)}
