@@ -69,6 +69,21 @@ function HomePage() {
         : { ...task };
     });
     setTaskList(mapped);
+    const body = tasked;
+    body.task_done = !tasked.task_done;
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/is-done/${
+          tasked.task_id
+        }`,
+        body
+      );
+      if (response.status === 204) {
+        setFetchData(!fetchData);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
