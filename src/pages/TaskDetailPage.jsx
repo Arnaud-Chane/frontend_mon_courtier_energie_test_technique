@@ -30,8 +30,9 @@ function TaskDetailPage() {
         />
       </div>
       <div className="task-description">
-      <Input
+        <Input
           value={taskDescription}
+          onChange={(e) => setTaskDescription(e.target.value)}
         />
       </div>
     </div>
