@@ -88,6 +88,11 @@ function HomePage() {
     }
   };
 
+  const handleFocusOut = (taskPriority) => {
+    console.info(taskPriority);
+    // Perform any desired actions here
+  };
+
   return (
     <div className="HomePage">
       <div className="input-task">
@@ -107,7 +112,10 @@ function HomePage() {
         {taskList.map((task) => {
           return (
             <li className="task" key={task.task_id}>
-              <Input value={task.task_priority} />
+              <Input
+                value={task.task_priority}
+                onBlur={() => handleFocusOut(task.task_priority)}
+              />
               <Checkbox
                 checked={task.task_done}
                 onChange={() => handleChecked(task)}
