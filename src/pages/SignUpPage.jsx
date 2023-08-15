@@ -53,6 +53,19 @@ function SignUpPage() {
         >
           <Input />
         </Form.Item>
+
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Veuillez renseigner votre mot de passe.",
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
       </Form>
     </div>
   );
