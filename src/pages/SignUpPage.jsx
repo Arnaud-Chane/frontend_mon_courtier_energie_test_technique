@@ -1,7 +1,10 @@
 import { Button, Form, Input } from "antd";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
+  const navigate = useNavigate();
+
   const onFinish = async (values) => {
     try {
       const response = await axios.post(
@@ -12,9 +15,11 @@ function SignUpPage() {
         console.info(
           "Données enregistrées avec succès dans la base de données !"
         );
+        navigate("/login");
       }
     } catch (err) {
       console.error(err);
+      console.log("Veuillez vérifier vos informations.");
     }
   };
 

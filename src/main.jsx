@@ -14,6 +14,7 @@ import ProfilePage from "./pages/ProfilePage";
 import TaskDetailPage from "./pages/TaskDetailPage";
 import Page403 from "./pages/Page403";
 import Page404 from "./pages/Page404";
+import Page500 from "./pages/Page500";
 import UserListPage from "./pages/admin/UserListPage";
 import UserDetail from "./pages/admin/UserDetail";
 
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/no-access",
         element: <Page403 />,
+      },
+      {
+        path: "/server-error",
+        element: <Page500 />,
       },
       {
         path: "*",
