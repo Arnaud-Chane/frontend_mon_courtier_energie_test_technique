@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Input, Checkbox } from "antd";
+import EditIcon from "../assets/images/edit-icon.svg";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -116,6 +117,7 @@ function HomePage() {
                 {task.title}
               </div>
               <div className="delete-btn-task">
+                <img className="edit-icon-homepage" src={EditIcon} alt="" />
                 <Button
                   type="submit"
                   onClick={() => handleDelete(task.task_id)}
