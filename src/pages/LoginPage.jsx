@@ -1,11 +1,27 @@
 import { Button, Form, Input } from "antd";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LoginPage() {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const navigate = useNavigate();
+
+  const onFinish = async (values) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
+        values
+      );
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        navigate("/");
+      }
+    } catch (err) {
+      console.error(err);
+      console.info("Veuillez vérifier vos informations.");
+    }
   };
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.info("Failed:", errorInfo);
   };
 
   return (
