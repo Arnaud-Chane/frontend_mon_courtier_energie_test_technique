@@ -3,7 +3,7 @@ import { Input } from "antd";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-function InputPriority({ task }) {
+function InputPriority({ task, setFetchData, fetchData }) {
   const [taskPriority, setTaskPriority] = useState();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function InputPriority({ task }) {
         body
       );
       if (response.status === 204) {
-        console.info("Priority updated");
+        setFetchData(!fetchData);
       }
     } catch (err) {
       console.error(err);
@@ -46,6 +46,8 @@ InputPriority.propTypes = {
     task_priority: PropTypes.number.isRequired,
     task_id: PropTypes.number.isRequired,
   }).isRequired,
+  setFetchData: PropTypes.func.isRequired,
+  fetchData: PropTypes.bool.isRequired,
 };
 
 export default InputPriority;

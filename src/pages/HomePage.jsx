@@ -25,6 +25,10 @@ function HomePage() {
     fetchTask();
   }, [fetchData]);
 
+  function compareByPriority(a, b) {
+    return a.task_priority - b.task_priority;
+  }
+
   const handleOnChange = (e) => {
     e.preventDefault();
     setTaskTitle(e.target.value);
@@ -106,10 +110,14 @@ function HomePage() {
         </Button>
       </div>
       <ul className="task-list">
-        {taskList.map((task) => {
+        {taskList.sort(compareByPriority).map((task) => {
           return (
             <li className="task" key={task.task_id}>
-              <InputPriority task={task} />
+              <InputPriority
+                task={task}
+                setFetchData={setFetchData}
+                fetchData={fetchData}
+              />
               <Checkbox
                 checked={task.task_done}
                 onChange={() => handleChecked(task)}
