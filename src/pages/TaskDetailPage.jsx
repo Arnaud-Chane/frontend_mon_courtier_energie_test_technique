@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Input } from "antd";
+import { Input, Button } from "antd";
 
 function TaskDetailPage() {
   const { id } = useParams();
@@ -34,6 +34,11 @@ function TaskDetailPage() {
           value={taskDescription}
           onChange={(e) => setTaskDescription(e.target.value)}
         />
+      </div>
+      <div className="update-btn-task">
+        <Button type="submit" onClick={() => console.log("hello")}>
+          Mettre à jour
+        </Button>
       </div>
     </div>
   );
