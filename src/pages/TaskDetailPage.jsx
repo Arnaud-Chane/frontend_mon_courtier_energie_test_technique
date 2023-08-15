@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Input } from "antd";
 
 function TaskDetailPage() {
   const { id } = useParams();
@@ -17,7 +18,11 @@ function TaskDetailPage() {
       });
   }, [id]);
 
-  return <div>{taskDetail.title}</div>;
+  return (
+    <div className="TaskDetailPage">
+      <Input value={taskDetail.title} />
+    </div>
+  );
 }
 
 export default TaskDetailPage;
