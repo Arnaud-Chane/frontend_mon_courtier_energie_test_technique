@@ -107,6 +107,7 @@ function HomePage() {
         {taskList.map((task) => {
           return (
             <li className="task" key={task.task_id}>
+              <Input value={task.task_priority} />
               <Checkbox
                 checked={task.task_done}
                 onChange={() => handleChecked(task)}
