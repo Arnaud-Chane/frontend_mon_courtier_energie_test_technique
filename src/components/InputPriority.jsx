@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Input } from "antd";
+import PropTypes from "prop-types";
 
 function InputPriority({ task }) {
   const [taskPriority, setTaskPriority] = useState();
@@ -22,5 +23,11 @@ function InputPriority({ task }) {
     </div>
   );
 }
+
+InputPriority.propTypes = {
+  task: PropTypes.shape({
+    task_priority: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
 export default InputPriority;
