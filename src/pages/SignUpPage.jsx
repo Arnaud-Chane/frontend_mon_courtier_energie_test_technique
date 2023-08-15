@@ -40,6 +40,19 @@ function SignUpPage() {
         >
           <Input />
         </Form.Item>
+
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Veuillez renseigner votre adresse mail.",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
       </Form>
     </div>
   );
