@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import "./main.scss";
 
+import PrivateRoutes from "./utils/PrivateRoutes";
+import userRoles from "./utils/constantRoles";
+
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -28,7 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <HomePage />,
+        element: (
+          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
+            <HomePage />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",
@@ -40,11 +47,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <ProfilePage />,
+        element: (
+          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
+            <ProfilePage />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/task/:id",
-        element: <TaskDetailPage />,
+        element: (
+          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
+            <TaskDetailPage />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/no-access",
@@ -67,11 +82,19 @@ const router = createBrowserRouter([
           },
           {
             path: "user",
-            element: <UserListPage />,
+            element: (
+              <PrivateRoutes expectedRoles={[userRoles.admin]}>
+                <UserListPage />
+              </PrivateRoutes>
+            ),
           },
           {
             path: "user/:id",
-            element: <UserDetail />,
+            element: (
+              <PrivateRoutes expectedRoles={[userRoles.admin]}>
+                <UserDetail />
+              </PrivateRoutes>
+            ),
           },
         ],
       },

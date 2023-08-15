@@ -19,7 +19,7 @@ function SignUpPage() {
       }
     } catch (err) {
       console.error(err);
-      console.log("Veuillez vérifier vos informations.");
+      console.info("Veuillez vérifier vos informations.");
     }
   };
 
