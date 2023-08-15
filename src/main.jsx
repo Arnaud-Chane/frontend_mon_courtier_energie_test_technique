@@ -8,6 +8,7 @@ import {
 import "./main.scss";
 
 import PrivateRoutes from "./utils/PrivateRoutes";
+import userRoles from "./utils/constantRoles";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: (
-          <PrivateRoutes>
+          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
             <HomePage />
           </PrivateRoutes>
         ),

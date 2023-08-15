@@ -15,7 +15,7 @@ function PrivateRoutes({ expectedRoles, children }) {
           const token = localStorage.getItem("token");
           const response = await axios({
             method: "POST",
-            url: `${import.meta.env.VITE_BACKEND_URL}/api/userinformation`,
+            url: `${import.meta.env.VITE_BACKEND_URL}/api/verify-token`,
             headers: { Authorization: `Bearer ${token}` },
           });
           if (response.status === 200) {
