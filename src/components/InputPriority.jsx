@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Input } from "antd";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 function InputPriority({ task }) {
   const [taskPriority, setTaskPriority] = useState();
@@ -9,8 +10,24 @@ function InputPriority({ task }) {
     setTaskPriority(task.task_priority);
   }, []);
 
-  const handleFocusOut = () => {
-    console.info(taskPriority);
+  const handleFocusOut = async () => {
+    const body = {
+      task_priority: taskPriority,
+    };
+
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/${
+          task.task_id
+        }/priority`,
+        body
+      );
+      if (response.status === 204) {
+        console.info("Priority updated");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -27,6 +44,7 @@ function InputPriority({ task }) {
 InputPriority.propTypes = {
   task: PropTypes.shape({
     task_priority: PropTypes.number.isRequired,
+    task_id: PropTypes.number.isRequired,
   }).isRequired,
 };
 
