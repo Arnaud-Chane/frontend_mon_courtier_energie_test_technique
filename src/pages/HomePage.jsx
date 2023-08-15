@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Input } from "antd";
+import { Button, Input, Checkbox } from "antd";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -80,6 +80,10 @@ function HomePage() {
         {taskList.map((task) => {
           return (
             <li className="task" key={task.task_id}>
+              <Checkbox
+                checked={task.task_done}
+                onChange={() => console.info(task.task_done)}
+              />
               <div className="task-to-edit">{task.title}</div>
               <div className="delete-btn-task">
                 <Button
