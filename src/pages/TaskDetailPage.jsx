@@ -5,13 +5,14 @@ import { Input } from "antd";
 
 function TaskDetailPage() {
   const { id } = useParams();
-  const [taskDetail, setTaskDetail] = useState([]);
+  const [taskTitle, setTaskTitle] = useState("");
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}`)
       .then((response) => {
-        setTaskDetail(response.data);
+        const taskInfo = response.data;
+        setTaskTitle(taskInfo.title);
       })
       .catch((error) => {
         console.error(error);
@@ -20,7 +21,7 @@ function TaskDetailPage() {
 
   return (
     <div className="TaskDetailPage">
-      <Input value={taskDetail.title} />
+      <Input value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} />
     </div>
   );
 }
