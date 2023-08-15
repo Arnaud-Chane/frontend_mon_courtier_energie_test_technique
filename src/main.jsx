@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import "./main.scss";
 
+import PrivateRoutes from "./utils/PrivateRoutes";
+
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -28,7 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <HomePage />,
+        element: (
+          <PrivateRoutes>
+            <HomePage />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",
