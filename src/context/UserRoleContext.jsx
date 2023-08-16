@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 
 export const UserInfoContext = createContext({});
 
@@ -8,7 +8,19 @@ function UserInfoProvider({ children }) {
     user_id: "",
   });
 
-  return <UserInfoContext.Provider>{children}</UserInfoContext.Provider>;
+  const contextAllInfoUser = useMemo(
+    () => ({
+      userInfo,
+      setUserInfo,
+    }),
+    [userInfo]
+  );
+
+  return (
+    <UserInfoContext.Provider value={contextAllInfoUser}>
+      {children}
+    </UserInfoContext.Provider>
+  );
 }
 
 export default UserInfoProvider;
