@@ -1,7 +1,11 @@
-import React from "react";
+import { Button } from "antd";
 
 function Page404() {
-  return <div>Page404</div>;
+  return (
+    <div>
+      <Button type="primary">Revenir à la page d'accueil</Button>
+    </div>
+  );
 }
 
 export default Page404;
