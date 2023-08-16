@@ -97,7 +97,7 @@ function SignUpPage() {
           </Button>
         </Form.Item>
       </Form>
-      <Link to="/sign-up">
+      <Link to="/login">
         <div className="btn-to-signup">Se connecter</div>
       </Link>
     </div>
