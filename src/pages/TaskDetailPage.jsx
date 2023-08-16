@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Input, Button } from "antd";
@@ -69,6 +69,9 @@ function TaskDetailPage() {
           Mettre à jour
         </Button>
       </div>
+      <Link to="/">
+        <div className="link-to-home-page">Retour</div>
+      </Link>
     </div>
   );
 }
