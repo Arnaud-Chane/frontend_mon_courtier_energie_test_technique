@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import "./main.scss";
 
+import UserInfoProvider from "./context/UserRoleContext";
+
 import PrivateRoutes from "./utils/PrivateRoutes";
 import userRoles from "./utils/constantRoles";
 
@@ -106,6 +108,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserInfoProvider>
+      <RouterProvider router={router} />
+    </UserInfoProvider>
   </React.StrictMode>
 );
