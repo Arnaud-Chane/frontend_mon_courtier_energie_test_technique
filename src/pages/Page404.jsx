@@ -1,6 +1,9 @@
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function Page404() {
+  const navigate = useNavigate();
+
   return (
     <div className="Page404">
       <Button type="primary">Revenir à la page d'accueil</Button>
