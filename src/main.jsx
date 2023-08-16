@@ -19,7 +19,7 @@ import Page403 from "./pages/Page403";
 import Page404 from "./pages/Page404";
 import Page500 from "./pages/Page500";
 import UserListPage from "./pages/admin/UserListPage";
-import UserDetail from "./pages/admin/UserDetail";
+import UserDetailPage from "./pages/admin/UserDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -92,7 +92,7 @@ const router = createBrowserRouter([
             path: "user/:id",
             element: (
               <PrivateRoutes expectedRoles={[userRoles.admin]}>
-                <UserDetail />
+                <UserDetailPage />
               </PrivateRoutes>
             ),
           },

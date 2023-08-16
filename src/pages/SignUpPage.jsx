@@ -1,6 +1,6 @@
 import { Button, Form, Input } from "antd";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -97,6 +97,9 @@ function SignUpPage() {
           </Button>
         </Form.Item>
       </Form>
+      <Link to="/login">
+        <div className="btn-to-signup">Se connecter</div>
+      </Link>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { Button, Form, Input } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 function LoginPage() {
@@ -81,6 +81,9 @@ function LoginPage() {
           </Button>
         </Form.Item>
       </Form>
+      <Link to="/sign-up">
+        <div className="btn-to-signup">S'enregistrer</div>
+      </Link>
     </div>
   );
 }
