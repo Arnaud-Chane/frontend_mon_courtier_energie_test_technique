@@ -12,6 +12,7 @@ function ProfilePage() {
   return (
     <div className="ProfilePage">
       <div className="pseudo">{userInfo.pseudo}</div>
+      <div className="email">{userInfo.email}</div>
       <Button type="primary" onClick={() => navigate("/")}>
         Revenir à la page d'accueil
       </Button>
