@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import LogoMCE from "../assets/images/logo-mce.png";
 
 function Navbar() {
   return (
-    <div>Navbar</div>
-  )
+    <div className="Navbar">
+      <img src={LogoMCE} alt="Logo MCE" />
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;
