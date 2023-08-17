@@ -1,12 +1,16 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Button, Checkbox } from "antd";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 
 import EditIcon from "../assets/images/edit-icon.svg";
 import InputPriority from "./InputPriority";
 
 function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
+  const [dueDate, setDueDate] = useState("");
+
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
@@ -44,6 +48,18 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
     }
   };
 
+  useEffect(() => {
+    const date1 = dayjs(task.due_date);
+    const date2 = dayjs();
+
+    const hours = date2.diff(date1, "hours");
+    const days = Math.floor(hours / 24) * -1;
+    setDueDate(days);
+  }, [taskList]);
+
+  // TODO : à faire dans pour la due Date
+  // TODO modif due date
+
   return (
     <div className="TaskLine">
       <li className="task" key={task.task_id}>
@@ -61,7 +77,7 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
         >
           {task.title}
         </div>
-        <div className="due-date">{task.due_date}</div>
+        <div className="due-date">{dueDate}</div>
         <div className="delete-btn-task">
           <Link to={`/task/${task.task_id}`}>
             <img className="edit-icon-homepage" src={EditIcon} alt="" />

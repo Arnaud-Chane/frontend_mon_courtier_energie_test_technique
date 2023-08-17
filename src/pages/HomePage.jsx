@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import dayjs from "dayjs";
 import { Button, Input, DatePicker, Space } from "antd";
 
 import TaskLine from "../components/TaskLine";
@@ -24,20 +23,6 @@ function HomePage() {
     };
     fetchTask();
   }, [fetchData]);
-
-  // useEffect(() => {
-  //   const date1 = dayjs().format("YYYY-MM-DD");
-  //   console.log(date1);
-  //   // console.log(
-  //   taskList.forEach((task, index) => {
-  //     // task.dueDate = date1.diff(date2, "day");
-  //     // taskList[index].dueDate = date1.diff(task.dueDate, "day");
-  //     console.log(task.due_date)
-  //   });
-  //   // );
-  //   // const date2 = dateString.split(" ")[0];
-  //   // setInDueDate(Math.abs(date1.diff(date2, "day")));
-  // }, [taskList]);
 
   function compareByPriority(a, b) {
     return a.task_priority - b.task_priority;
@@ -86,7 +71,7 @@ function HomePage() {
         />
         <div className="time-picker">
           <Space direction="vertical" size={12}>
-            A finir avant :
+            À finir avant :
             <DatePicker
               onChange={handleTimePicker}
               placeholder="Choisir une date"
