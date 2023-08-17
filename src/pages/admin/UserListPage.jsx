@@ -22,7 +22,9 @@ function UserListPage() {
     <div className="UserListPage">
       {userList.map((user) => {
         return (
-          <li key={user.user_id}>{user.pseudo} - {user.email}</li>
+          <li key={user.user_id}>
+            {user.pseudo} - {user.email}
+          </li>
         );
       })}
     </div>

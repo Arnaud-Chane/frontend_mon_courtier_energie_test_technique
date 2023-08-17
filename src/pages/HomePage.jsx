@@ -105,7 +105,7 @@ function HomePage() {
       <div className="input-task">
         <Input
           value={taskTitle}
-          placeholder="Basic usage"
+          placeholder="Ecrire une tâche"
           onChange={handleOnChange}
           className="task-input"
         />
