@@ -29,21 +29,13 @@ function TaskDetailPage() {
     const body = {
       title: taskTitle,
       detail: taskDescription,
+      task_done: 0,
+      task_priority: 2,
+      due_date: dueDate,
     };
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}`,
-        body
-      );
-      if (response.status === 204) {
-        console.info("success title");
-      }
-    } catch (err) {
-      console.error(err);
-    }
-    try {
-      const response = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}/detail`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}/info`,
         body
       );
       if (response.status === 204) {
@@ -52,6 +44,10 @@ function TaskDetailPage() {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleTimePicker = (value, dateString) => {
+    setDueDate(dateString);
   };
 
   return (
@@ -71,10 +67,7 @@ function TaskDetailPage() {
       <div className="time-picker">
         <Space direction="vertical" size={12}>
           À finir avant :
-          <DatePicker
-            // onChange={handleTimePicker}
-            placeholder={dueDate}
-          />
+          <DatePicker onChange={handleTimePicker} placeholder={dueDate} />
         </Space>
       </div>
       <div className="update-btn-task">
