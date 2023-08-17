@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Input, Checkbox } from "antd";
+
+import { UserInfoContext } from "../context/UserRoleContext";
 
 import EditIcon from "../assets/images/edit-icon.svg";
 import InputPriority from "../components/InputPriority";
 
 function HomePage() {
+  const { userInfo } = useContext(UserInfoContext);
+
   const [taskList, setTaskList] = useState([]);
   const [taskTitle, setTaskTitle] = useState("");
   const [fetchData, setFetchData] = useState(false);
@@ -15,7 +19,9 @@ function HomePage() {
     const fetchTask = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/tasks`
+          `${import.meta.env.VITE_BACKEND_URL}/api/users/${
+            userInfo.userId
+          }/tasks`
         );
         setTaskList(response.data);
       } catch (error) {
@@ -38,7 +44,7 @@ function HomePage() {
     const body = {
       title: taskTitle,
       detail: "",
-      user_id: 1,
+      user_id: userInfo.userId,
       task_done: 0,
       task_archived: 0,
       task_priority: taskList.length + 1,
