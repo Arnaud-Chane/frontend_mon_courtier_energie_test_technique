@@ -1,23 +1,53 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+
 import { Button, Form, Input } from "antd";
-import { UserInfoContext } from "../../context/UserRoleContext";
 
 function UserDetailPage() {
   const navigate = useNavigate();
-  const { userInfo } = useContext(UserInfoContext);
+  const { id } = useParams();
 
-  const onSubmit = (values) => {
-    console.log("Success:", values);
+  const [userPseudo, setUserPseudo] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/users/${id}`)
+      .then((response) => {
+        const infoUser = response.data;
+        setUserPseudo(infoUser.pseudo);
+        setUserEmail(infoUser.email);
+      });
+  }, [id]);
+
+  const onSubmit = async (values) => {
+    const body = {
+      pseudo: values.pseudo,
+      email: values.email,
+      user_id: id,
+      is_admin: 0,
+    };
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users/${id}`,
+        body
+      );
+      if (response.status === 204) {
+        navigate("/admin");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.info("Failed:", errorInfo);
   };
 
   return (
     <div className="UserDetailPage">
-      <div className="user-pseudo">{userInfo.pseudo}</div>
+      <div className="user-pseudo">{userPseudo}</div>
 
       <Form
         name="basic"
@@ -38,11 +68,11 @@ function UserDetailPage() {
         autoComplete="off"
       >
         <Form.Item label="" name="pseudo">
-          <Input defaultValue={userInfo.pseudo} />
+          <Input defaultValue={userPseudo} />
         </Form.Item>
 
         <Form.Item label="" name="email">
-          <Input defaultValue={userInfo.email} />
+          <Input defaultValue={userEmail} />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
