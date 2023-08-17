@@ -57,8 +57,9 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
     setDueDate(days);
   }, [taskList]);
 
-  // TODO : à faire dans pour la due Date
+  // TODO : à faire dans pour la due Date ou si déjà dépassé ou aujourd'hui
   // TODO modif due date
+  // TODO : CSS
 
   return (
     <div className="TaskLine">
@@ -77,7 +78,8 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
         >
           {task.title}
         </div>
-        <div className="due-date">{dueDate}</div>
+        <div className="due-date">Il reste {dueDate} jours</div>
+        <div className="due-date-date">Date : {dayjs(task.due_date).format("DD-MM-YYYY")}</div>
         <div className="delete-btn-task">
           <Link to={`/task/${task.task_id}`}>
             <img className="edit-icon-homepage" src={EditIcon} alt="" />
