@@ -1,7 +1,9 @@
-import React from "react";
-
 function UserListPage() {
-  return <div>UserListPage</div>;
+  return (
+    <div className="UserListPage">
+      UserListPage
+    </div>
+  );
 }
 
 export default UserListPage;
