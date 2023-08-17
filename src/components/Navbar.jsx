@@ -1,10 +1,12 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import LogoMCE from "../assets/images/logo-mce.png";
 
 function Navbar() {
   return (
     <div className="Navbar">
-      <img src={LogoMCE} alt="Logo MCE" />
+      <Link to="/">
+        <img src={LogoMCE} alt="Logo MCE" />
+      </Link>
     </div>
   );
 }
