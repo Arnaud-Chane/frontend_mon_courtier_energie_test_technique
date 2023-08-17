@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import "./main.scss";
 
+import Layout from "./layout/Layout";
+
 import UserInfoProvider from "./context/UserRoleContext";
 
 import PrivateRoutes from "./utils/PrivateRoutes";
@@ -26,6 +28,7 @@ import UserDetailPage from "./pages/admin/UserDetailPage";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Layout />,
     children: [
       {
         index: true,
