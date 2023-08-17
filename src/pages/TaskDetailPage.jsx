@@ -1,12 +1,15 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Input, Button } from "antd";
+import { Input, Button, DatePicker, Space } from "antd";
 
 function TaskDetailPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   useEffect(() => {
     axios
@@ -15,6 +18,7 @@ function TaskDetailPage() {
         const taskInfo = response.data;
         setTaskTitle(taskInfo.title);
         setTaskDescription(taskInfo.detail);
+        setDueDate(taskInfo.due_date);
       })
       .catch((error) => {
         console.error(error);
@@ -43,7 +47,7 @@ function TaskDetailPage() {
         body
       );
       if (response.status === 204) {
-        console.info("success detail");
+        navigate("/");
       }
     } catch (err) {
       console.error(err);
@@ -63,6 +67,15 @@ function TaskDetailPage() {
           value={taskDescription}
           onChange={(e) => setTaskDescription(e.target.value)}
         />
+      </div>
+      <div className="time-picker">
+        <Space direction="vertical" size={12}>
+          À finir avant :
+          <DatePicker
+            // onChange={handleTimePicker}
+            placeholder={dueDate}
+          />
+        </Space>
       </div>
       <div className="update-btn-task">
         <Button type="submit" onClick={() => handleSubmit()}>
