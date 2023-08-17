@@ -1,19 +1,17 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Input, Checkbox } from "antd";
-
-import { UserInfoContext } from "../context/UserRoleContext";
+// import dayjs from "dayjs";
+import { Button, Input, Checkbox, DatePicker, Space } from "antd";
 
 import EditIcon from "../assets/images/edit-icon.svg";
 import InputPriority from "../components/InputPriority";
 
 function HomePage() {
-  const { userInfo } = useContext(UserInfoContext);
-
   const [taskList, setTaskList] = useState([]);
   const [taskTitle, setTaskTitle] = useState("");
   const [fetchData, setFetchData] = useState(false);
+  const [dueDate, setDueDate] = useState("");
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -42,10 +40,10 @@ function HomePage() {
     const body = {
       title: taskTitle,
       detail: "",
-      user_id: userInfo.userId,
       task_done: 0,
       task_archived: 0,
       task_priority: taskList.length + 1,
+      due_date: dueDate,
     };
     try {
       const response = await axios.post(
@@ -98,6 +96,13 @@ function HomePage() {
     }
   };
 
+  const handleTimePicker = (value, dateString) => {
+    // const date1 = dayjs();
+    // const date2 = dateString.split(" ")[0];
+    setDueDate(dateString.split(" ")[0]);
+    // setInDueDate(Math.abs(date1.diff(date2, "day")));
+  };
+
   return (
     <div className="HomePage">
       <div className="input-task">
@@ -107,6 +112,15 @@ function HomePage() {
           onChange={handleOnChange}
           className="task-input"
         />
+        <div className="time-picker">
+          <Space direction="vertical" size={12}>
+            A finir avant :
+            <DatePicker
+              onChange={handleTimePicker}
+              placeholder="Choisir une date"
+            />
+          </Space>
+        </div>
       </div>
       <div className="add-btn-task">
         <Button type="submit" onClick={() => handleSubmit()}>
@@ -133,6 +147,7 @@ function HomePage() {
               >
                 {task.title}
               </div>
+              <div className="due-date">{task.due_date}</div>
               <div className="delete-btn-task">
                 <Link to={`/task/${task.task_id}`}>
                   <img className="edit-icon-homepage" src={EditIcon} alt="" />
