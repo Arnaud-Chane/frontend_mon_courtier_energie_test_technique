@@ -36,11 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: (
-          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
-            <HomePage />
-          </PrivateRoutes>
-        ),
+        element: <HomePage />,
       },
       {
         path: "/login",
@@ -52,19 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: (
-          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
-            <ProfilePage />
-          </PrivateRoutes>
-        ),
+        element: <ProfilePage />,
       },
       {
         path: "/task/:id",
-        element: (
-          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
-            <TaskDetailPage />
-          </PrivateRoutes>
-        ),
+        element: <TaskDetailPage />,
       },
       {
         path: "/no-access",

@@ -19,9 +19,7 @@ function HomePage() {
     const fetchTask = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/users/${
-            userInfo.userId
-          }/tasks`
+          `${import.meta.env.VITE_BACKEND_URL}/api/tasks`
         );
         setTaskList(response.data);
       } catch (error) {
