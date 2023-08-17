@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import EditIcon from "../../assets/images/edit-icon.svg";
@@ -27,7 +28,9 @@ function UserListPage() {
         return (
           <li key={user.user_id}>
             {user.pseudo} - {user.email}
-            <img src={EditIcon} alt="Edit Icon" />
+            <Link to={`/admin/user/${user.user_id}`}>
+              <img src={EditIcon} alt="Edit Icon" />
+            </Link>
             <img src={DeleteIcon} alt="Delete Icon" />
           </li>
         );
