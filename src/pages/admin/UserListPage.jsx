@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import EditIcon from "../../assets/images/edit-icon.svg";
+import DeleteIcon from "../../assets/images/delete-icon.svg";
+
 function UserListPage() {
   const [userList, setUserList] = useState([]);
 
@@ -24,6 +27,8 @@ function UserListPage() {
         return (
           <li key={user.user_id}>
             {user.pseudo} - {user.email}
+            <img src={EditIcon} alt="Edit Icon" />
+            <img src={DeleteIcon} alt="Delete Icon" />
           </li>
         );
       })}
