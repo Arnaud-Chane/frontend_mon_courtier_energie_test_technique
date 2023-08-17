@@ -7,6 +7,7 @@ import DeleteIcon from "../../assets/images/delete-icon.svg";
 
 function UserListPage() {
   const [userList, setUserList] = useState([]);
+  const [fetchData, setFetchData] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -20,7 +21,7 @@ function UserListPage() {
       }
     };
     fetchUser();
-  }, []);
+  }, [fetchData]);
 
   const handleDelete = async (id) => {
     try {
@@ -28,7 +29,7 @@ function UserListPage() {
         `${import.meta.env.VITE_BACKEND_URL}/api/users/${id}`
       );
       if (response.status === 204) {
-        console.log('ok')
+        setFetchData(!fetchData);
       }
     } catch (err) {
       console.error(err);
