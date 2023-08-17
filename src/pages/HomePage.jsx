@@ -62,7 +62,11 @@ function HomePage() {
 
   return (
     <div className="HomePage">
-      <div className="input-task">
+      <div className="header">
+        <div className="page-title">Mes tâches de courtier</div>
+        <div class="h_line"></div>
+      </div>
+      <div className="task-input-ctn">
         <Input
           value={taskTitle}
           placeholder="Ecrire une tâche"
@@ -70,20 +74,26 @@ function HomePage() {
           className="task-input"
         />
         <div className="time-picker">
-          <Space direction="vertical" size={12}>
+          <Space direction="vertical" size={12} className="date-picker">
             À finir avant :
             <DatePicker
               onChange={handleTimePicker}
               placeholder="Choisir une date"
+              className="calendar"
             />
           </Space>
         </div>
+        <div className="add-btn-task">
+          <Button
+            type="submit"
+            onClick={() => handleSubmit()}
+            className="task-add-btn"
+          >
+            +
+          </Button>
+        </div>
       </div>
-      <div className="add-btn-task">
-        <Button type="submit" onClick={() => handleSubmit()}>
-          +
-        </Button>
-      </div>
+
       <ul className="task-list">
         {taskList.sort(compareByPriority).map((task) => {
           return (

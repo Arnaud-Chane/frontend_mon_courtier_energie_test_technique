@@ -1,3 +1,42 @@
-.strike {
-  text-decoration: line-through;
+.HomePage {
+  @include center-vertical;
+
+  .header{
+    margin: 5rem 0 2rem 0;
+
+    .page-title{
+      @include center-horizontal;
+      margin: 1rem 0 1rem 0;
+    }
+
+    .h_line {
+      border-bottom: 6px solid $primary-color;
+      width: 300px;
+      margin: auto;
+    }
+  }
+
+  .task-input-ctn{
+    display: flex;
+    width: 70vw;
+    @include center-horizontal;
+
+    .task-input{
+      width: 40%;
+      margin: 2rem;
+    }
+
+    .date-picker{
+      margin: 2rem 2rem 4rem 2rem;
+    }
+
+    .task-add-btn{
+      border: 1px solid $primary-color;
+    }
+  }
+
+  .task-list{
+    width: 70vw;
+    list-style-type: none;
+  }
 }

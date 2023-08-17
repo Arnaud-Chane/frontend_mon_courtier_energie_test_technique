@@ -58,10 +58,6 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
     setDueDate(days);
   }, [taskList]);
 
-  // TODO : à faire dans pour la due Date ou si déjà dépassé ou aujourd'hui
-  // TODO modif due date
-  // TODO : CSS
-
   return (
     <div className="TaskLine">
       <li className="task" key={task.task_id}>

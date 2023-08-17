@@ -1,4 +1,10 @@
 @import "./assets/styles/variables";
 
 @import "./assets/styles/pages/homePage";
+@import "./assets/styles/components/TaskLine";
 
+*,
+*::before,
+*::after {
+  font-family: $app-primary-font;
+}
