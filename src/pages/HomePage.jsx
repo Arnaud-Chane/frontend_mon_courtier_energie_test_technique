@@ -147,6 +147,7 @@ function HomePage() {
               >
                 {task.title}
               </div>
+              <div className="due-date">{task.due_date}</div>
               <div className="delete-btn-task">
                 <Link to={`/task/${task.task_id}`}>
                   <img className="edit-icon-homepage" src={EditIcon} alt="" />
