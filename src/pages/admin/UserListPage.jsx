@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
+import EditIcon from "../../assets/images/edit-icon.svg";
+import DeleteIcon from "../../assets/images/delete-icon.svg";
 
 function UserListPage() {
   const [userList, setUserList] = useState([]);
+  const [fetchData, setFetchData] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -16,7 +21,20 @@ function UserListPage() {
       }
     };
     fetchUser();
-  }, []);
+  }, [fetchData]);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users/${id}`
+      );
+      if (response.status === 204) {
+        setFetchData(!fetchData);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="UserListPage">
@@ -24,6 +42,12 @@ function UserListPage() {
         return (
           <li key={user.user_id}>
             {user.pseudo} - {user.email}
+            <Link to={`/admin/user/${user.user_id}`}>
+              <img src={EditIcon} alt="Edit Icon" />
+            </Link>
+            <button type="button" onClick={() => handleDelete(user.user_id)}>
+              <img src={DeleteIcon} alt="Delete Icon" />
+            </button>
           </li>
         );
       })}
