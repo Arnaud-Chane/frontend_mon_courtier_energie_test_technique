@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Input, Checkbox } from "antd";
+import { Button, Input, Checkbox, DatePicker, Space } from "antd";
+const { RangePicker } = DatePicker;
 
 import { UserInfoContext } from "../context/UserRoleContext";
 
@@ -100,6 +101,14 @@ function HomePage() {
     }
   };
 
+  const handleTimePicker = (value, dateString) => {
+    console.info("Selected Time: ", value);
+    console.info("Formatted Selected Time: ", dateString);
+  };
+  const onOk = (value) => {
+    console.info("onOk: ", value);
+  };
+
   return (
     <div className="HomePage">
       <div className="input-task">
@@ -109,6 +118,12 @@ function HomePage() {
           onChange={handleOnChange}
           className="task-input"
         />
+        <div className="time-picker">
+          <Space direction="vertical" size={12}>
+            A finir avant :
+            <DatePicker showTime onChange={handleTimePicker} onOk={onOk} />
+          </Space>
+        </div>
       </div>
       <div className="add-btn-task">
         <Button type="submit" onClick={() => handleSubmit()}>
