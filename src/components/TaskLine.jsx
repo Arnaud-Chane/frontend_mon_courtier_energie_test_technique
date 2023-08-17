@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 
 import EditIcon from "../assets/images/edit-icon.svg";
 import InputPriority from "./InputPriority";
+import DueDate from "./DueDate";
 
 function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
   const [dueDate, setDueDate] = useState("");
@@ -78,8 +79,8 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
         >
           {task.title}
         </div>
-        <div className="due-date">Il reste {dueDate} jours</div>
-        <div className="due-date-date">Date : {dayjs(task.due_date).format("DD-MM-YYYY")}</div>
+        <DueDate task={task} onDueDate={dueDate} />
+
         <div className="delete-btn-task">
           <Link to={`/task/${task.task_id}`}>
             <img className="edit-icon-homepage" src={EditIcon} alt="" />
