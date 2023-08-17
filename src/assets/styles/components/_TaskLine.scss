@@ -1,7 +1,19 @@
-.task{
-  display: flex;
-}
+.TaskLine {
+  .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-.strike {
-  text-decoration: line-through;
+    .InputPriority{
+      width: 3rem;
+    }
+
+    .checkbox-task-done{
+      margin: 0 20rem 0 0;
+    }
+  }
+
+  .strike {
+    text-decoration: line-through;
+  }
 }

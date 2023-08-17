@@ -95,6 +95,12 @@ function HomePage() {
       </div>
 
       <ul className="task-list">
+        <div className="task-header">
+          <div className="priority">Priorité</div>
+          <div className="done">Fait</div>
+          <div className="task-title">Titre</div>
+          <div className="due-in">Date</div>
+        </div>
         {taskList.sort(compareByPriority).map((task) => {
           return (
             <TaskLine

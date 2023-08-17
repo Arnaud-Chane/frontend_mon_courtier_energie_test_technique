@@ -38,5 +38,18 @@
   .task-list{
     width: 70vw;
     list-style-type: none;
+
+    .task-header{
+      @include center-horizontal;
+      justify-content: space-between;
+
+      .priority{
+        margin: 0 0 0 0;
+      }
+
+      .done{
+        margin: 0 38rem 0 0;
+      }
+    }
   }
 }

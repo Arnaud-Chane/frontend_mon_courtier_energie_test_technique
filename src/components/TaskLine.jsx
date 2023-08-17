@@ -69,6 +69,7 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
         <Checkbox
           checked={task.task_done}
           onChange={() => handleChecked(task)}
+          className="checkbox-task-done"
         />
         <div
           className={task.task_done ? "task-to-edit strike" : "task-to-edit"}
