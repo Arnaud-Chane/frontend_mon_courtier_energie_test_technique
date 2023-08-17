@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import dayjs from "dayjs";
 import { Button, Input, Checkbox, DatePicker, Space } from "antd";
-const { RangePicker } = DatePicker;
 
 import { UserInfoContext } from "../context/UserRoleContext";
 
@@ -15,6 +15,8 @@ function HomePage() {
   const [taskList, setTaskList] = useState([]);
   const [taskTitle, setTaskTitle] = useState("");
   const [fetchData, setFetchData] = useState(false);
+  const [datePicker, setDatePicker] = useState("");
+  const [inDueDate, setInDueDate] = useState("");
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -102,11 +104,9 @@ function HomePage() {
   };
 
   const handleTimePicker = (value, dateString) => {
-    console.info("Selected Time: ", value);
-    console.info("Formatted Selected Time: ", dateString);
-  };
-  const onOk = (value) => {
-    console.info("onOk: ", value);
+    const date1 = dayjs();
+    const date2 = dateString.split(" ")[0];
+    setInDueDate(Math.abs(date1.diff(date2, "day")));
   };
 
   return (
@@ -121,7 +121,10 @@ function HomePage() {
         <div className="time-picker">
           <Space direction="vertical" size={12}>
             A finir avant :
-            <DatePicker showTime onChange={handleTimePicker} onOk={onOk} />
+            <DatePicker
+              onChange={handleTimePicker}
+              placeholder="Choisir une date"
+            />
           </Space>
         </div>
       </div>
