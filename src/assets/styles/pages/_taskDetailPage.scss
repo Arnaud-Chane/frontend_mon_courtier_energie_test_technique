@@ -39,11 +39,11 @@
   .btn-ctn{
     .update-btn{
       margin: 0 0 1rem 0;
-      background-color: $primary-color;
+      background-color: $secondary-color;
     }
 
     .update-btn:hover{
-      background-color: #FF8F5F;
+      background-color: $primary-color;
     }
 
   }

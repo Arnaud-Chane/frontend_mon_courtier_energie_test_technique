@@ -48,8 +48,16 @@
       @include center-horizontal;
       justify-content: space-between;
 
+      .priority{
+        margin: 0 2rem 0 0;
+      }
+
+      .done{
+        margin: 0 2rem 0 0;
+      }
+
       .task-title{
-        margin: 0 20rem 0 0;
+        margin: 0 21rem 0 0;
       }
 
       .due-in{
