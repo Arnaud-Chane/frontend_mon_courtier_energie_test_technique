@@ -1,0 +1,50 @@
+.TaskDetailPage {
+  @include center-vertical;
+
+  .logo {
+    margin: 2rem 0 2rem 0;
+  }
+
+  .task-title-ctn {
+    margin: 2rem 0 2rem 0;
+    
+    .task-title-line {
+      @include center-horizontal;
+
+      .task-title {
+        border: none;
+      }
+
+      .edit-icon {
+        width: 1.2rem;
+        margin: 0 0.5rem 0 0;
+      }
+    }
+
+    .h_line {
+      border-bottom: 3px solid $tertiary-color;
+      margin: auto;
+    }
+  }
+
+  .task-description-ctn{
+    margin: 0 0 2rem 0;
+    width: 20vw;
+  }
+
+  .time-picker{
+    margin: 0 0 2rem 0;
+  }
+
+  .btn-ctn{
+    .update-btn{
+      margin: 0 0 1rem 0;
+      background-color: $primary-color;
+    }
+
+    .update-btn:hover{
+      background-color: $secondary-color;
+    }
+
+  }
+}
