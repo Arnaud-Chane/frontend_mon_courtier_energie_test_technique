@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
 import EditIcon from "../assets/images/edit-icon.svg";
+import DeleteIcon from "../assets/images/delete-icon.svg";
 import InputPriority from "./InputPriority";
 import DueDate from "./DueDate";
 
@@ -83,7 +84,7 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
             <img className="edit-icon-homepage" src={EditIcon} alt="" />
           </Link>
           <Button type="submit" onClick={() => handleDelete(task.task_id)}>
-            delete
+            <img className="delete-icon-homepage" src={DeleteIcon} alt="" />
           </Button>
         </div>
       </li>
