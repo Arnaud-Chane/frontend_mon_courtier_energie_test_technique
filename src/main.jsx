@@ -28,7 +28,6 @@ import UserDetailPage from "./pages/admin/UserDetailPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
     children: [
       {
         index: true,
