@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, Input, DatePicker, Space } from "antd";
 
 import TaskLine from "../components/TaskLine";
+import LogoMCE from "../assets/images/logo-mce.png";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -62,7 +63,12 @@ function HomePage() {
 
   return (
     <div className="HomePage">
-      <div className="input-task">
+      <div className="header">
+        <img src={LogoMCE} alt="Logo MCE" className="logo"/>
+        <div className="page-title">Mes tâches de courtier</div>
+        <div class="h_line"></div>
+      </div>
+      <div className="task-input-ctn">
         <Input
           value={taskTitle}
           placeholder="Ecrire une tâche"
@@ -70,21 +76,33 @@ function HomePage() {
           className="task-input"
         />
         <div className="time-picker">
-          <Space direction="vertical" size={12}>
+          <Space direction="vertical" size={12} className="date-picker">
             À finir avant :
             <DatePicker
               onChange={handleTimePicker}
               placeholder="Choisir une date"
+              className="calendar"
             />
           </Space>
         </div>
+        <div className="add-btn-task">
+          <Button
+            type="submit"
+            onClick={() => handleSubmit()}
+            className="task-add-btn"
+          >
+            +
+          </Button>
+        </div>
       </div>
-      <div className="add-btn-task">
-        <Button type="submit" onClick={() => handleSubmit()}>
-          +
-        </Button>
-      </div>
+
       <ul className="task-list">
+        <div className="task-header">
+          <div className="priority">Priorité</div>
+          <div className="done">Fait</div>
+          <div className="task-title">Titre</div>
+          <div className="due-in">Date</div>
+        </div>
         {taskList.sort(compareByPriority).map((task) => {
           return (
             <TaskLine
