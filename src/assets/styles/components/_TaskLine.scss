@@ -1,7 +1,7 @@
 .TaskLine {
   .task {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
     .InputPriority{
@@ -9,7 +9,16 @@
     }
 
     .checkbox-task-done{
+      margin: 0 2rem 0 2.5rem;
+    }
+
+    .task-to-edit{
       margin: 0 20rem 0 0;
+    }
+
+    .delete-btn-task{
+      @include center-horizontal;
+      margin: 0.5rem;
     }
   }
 

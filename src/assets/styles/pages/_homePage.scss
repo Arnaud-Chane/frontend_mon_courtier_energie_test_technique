@@ -2,7 +2,12 @@
   @include center-vertical;
 
   .header{
-    margin: 5rem 0 2rem 0;
+    margin: 2rem 0 2rem 0;
+    @include center-vertical;
+
+    .logo{
+      margin: 0 0 2rem 0;
+    }
 
     .page-title{
       @include center-horizontal;
@@ -43,13 +48,13 @@
       @include center-horizontal;
       justify-content: space-between;
 
-      .priority{
-        margin: 0 0 0 0;
+      .task-title{
+        margin: 0 20rem 0 0;
       }
 
-      .done{
-        margin: 0 38rem 0 0;
-      }
+      .due-in{
+        margin: 0 20rem 0 0;
+            }
     }
   }
 }

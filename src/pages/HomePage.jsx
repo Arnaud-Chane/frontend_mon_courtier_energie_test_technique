@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, Input, DatePicker, Space } from "antd";
 
 import TaskLine from "../components/TaskLine";
+import LogoMCE from "../assets/images/logo-mce.png";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -63,6 +64,7 @@ function HomePage() {
   return (
     <div className="HomePage">
       <div className="header">
+        <img src={LogoMCE} alt="Logo MCE" className="logo"/>
         <div className="page-title">Mes tâches de courtier</div>
         <div class="h_line"></div>
       </div>
