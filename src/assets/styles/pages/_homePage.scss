@@ -23,14 +23,17 @@
 
   .task-section {
     width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .task-input-ctn {
-      display: flex;
       @include center-horizontal;
+      width: 100%;
 
       .task-input {
         width: 40%;
-        margin: 2rem;
+        margin: 2rem 1rem;
       }
 
       .date-picker {
@@ -48,7 +51,6 @@
     }
     
     .task-list {
-      margin-left: 11rem;
       width: 100%;
     }
   }

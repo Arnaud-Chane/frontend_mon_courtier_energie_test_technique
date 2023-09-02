@@ -76,8 +76,12 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
           className="checkbox-task-done"
         />
       </td>
-      <td className={task.task_done ? "task-to-edit strike" : "task-to-edit"}>
-        {task.title}
+      <td>
+        <div
+          className={task.task_done ? "task-to-edit strike" : "task-to-edit"}
+        >
+          {task.title}
+        </div>
       </td>
       <td>
         <DueDate task={task} onDueDate={dueDate} />

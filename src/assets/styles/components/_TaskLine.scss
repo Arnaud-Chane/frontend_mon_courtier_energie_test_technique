@@ -4,14 +4,7 @@
     display: flex;
     @include center;
   }
-
-  .task-to-edit{
-    display: flex;
-    justify-content: center;
-    padding-top: 2rem;
-  }
-
-
+  
   .InputPriority input {
     width: 3rem;
   }
