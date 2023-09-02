@@ -60,26 +60,30 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
   }, [taskList]);
 
   return (
-    <div className="TaskLine">
-      <li className="task" key={task.task_id}>
+    <tr className="task" key={task.task_id}>
+      <td>
         <InputPriority
           task={task}
           setFetchData={setFetchData}
           fetchData={fetchData}
+          className="priority-task-input"
         />
+      </td>
+      <td>
         <Checkbox
           checked={task.task_done}
           onChange={() => handleChecked(task)}
           className="checkbox-task-done"
         />
-        <div
-          className={task.task_done ? "task-to-edit strike" : "task-to-edit"}
-        >
-          {task.title}
-        </div>
+      </td>
+      <td className={task.task_done ? "task-to-edit strike" : "task-to-edit"}>
+        {task.title}
+      </td>
+      <td>
         <DueDate task={task} onDueDate={dueDate} />
-
-        <div className="delete-btn-task">
+      </td>
+      <td>
+        <div className="edit-delete-btn-task">
           <Link to={`/task/${task.task_id}`}>
             <img className="edit-icon-homepage" src={EditIcon} alt="" />
           </Link>
@@ -87,8 +91,8 @@ function TaskLine({ task, fetchData, setFetchData, taskList, setTaskList }) {
             <img className="delete-icon-homepage" src={DeleteIcon} alt="" />
           </Button>
         </div>
-      </li>
-    </div>
+      </td>
+    </tr>
   );
 }
 

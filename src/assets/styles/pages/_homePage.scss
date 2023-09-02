@@ -21,49 +21,35 @@
     }
   }
 
-  .task-input-ctn {
-    display: flex;
+  .task-section {
     width: 70vw;
-    @include center-horizontal;
 
-    .task-input {
-      width: 40%;
-      margin: 2rem;
-    }
-
-    .date-picker {
-      margin: 2rem 2rem 4rem 2rem;
-    }
-
-    .task-add-btn {
-      border: 1px solid $primary-color;
-    }
-  }
-
-  .task-list {
-    width: 70vw;
-    list-style-type: none;
-    padding: 0 0 0 15rem;
-
-    .task-header {
+    .task-input-ctn {
+      display: flex;
       @include center-horizontal;
-      justify-content: flex-start;
 
-      .priority {
-        margin: 0 2.7rem 0 0;
+      .task-input {
+        width: 40%;
+        margin: 2rem;
       }
 
-      .done {
-        margin: 0 4.3rem 0 0;
+      .date-picker {
+        margin: 2rem 2rem 4rem 2rem;
       }
 
-      .task-title {
-        margin: 0 21.5rem 0 0;
+      .task-add-btn {
+        border: 1px solid $primary-color;
       }
+    }
 
-      .due-in {
-        margin: 0 20rem 0 0;
-      }
+    .task-list-section {
+      width: 70%;
+
+    }
+    
+    .task-list {
+      margin-left: 11rem;
+      width: 100%;
     }
   }
 }

@@ -1,37 +1,22 @@
-.TaskLine {
-  .task {
+.task {
+
+  td div , td label{
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    .InputPriority {
-      width: 3rem;
-      margin: 0 0.6rem 0 0;
-    }
-
-    .checkbox-task-done {
-      margin: 0 5rem 0 2.5rem;
-    }
-
-    .task-to-edit {
-      margin: 0 20rem 0 0;
-    }
-
-    .delete-btn-task {
-      @include center-horizontal;
-      margin: 0.5rem;
-    }
-
-    .edit-icon-homepage {
-      width: 1.3rem;
-    }
-
-    .delete-icon-homepage {
-      width: 1.3rem;
-    }
+    @include center;
   }
 
-  .strike {
-    text-decoration: line-through;
+  .task-to-edit{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
   }
+
+
+  .InputPriority input {
+    width: 3rem;
+  }
+}
+
+.strike {
+  text-decoration: line-through;
 }
