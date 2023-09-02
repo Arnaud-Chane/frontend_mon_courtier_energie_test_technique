@@ -68,54 +68,62 @@ function HomePage() {
         <div className="page-title">Mes tâches de courtier</div>
         <div className="h_line" />
       </div>
-      <div className="task-input-ctn">
-        <Input
-          value={taskTitle}
-          placeholder="Ecrire une tâche"
-          onChange={handleOnChange}
-          className="task-input"
-        />
-        <div className="time-picker">
-          <Space direction="vertical" size={12} className="date-picker">
-            À finir avant :
-            <DatePicker
-              onChange={handleTimePicker}
-              placeholder="Choisir une date"
-              className="calendar"
-            />
-          </Space>
+      <div className="task-section">
+        <div className="task-input-ctn">
+          <Input
+            value={taskTitle}
+            placeholder="Ecrire une tâche"
+            onChange={handleOnChange}
+            className="task-input"
+          />
+          <div className="time-picker">
+            <Space direction="vertical" size={12} className="date-picker">
+              À finir avant :
+              <DatePicker
+                onChange={handleTimePicker}
+                placeholder="Choisir une date"
+                className="calendar"
+              />
+            </Space>
+          </div>
+          <div className="add-btn-task">
+            <Button
+              type="submit"
+              onClick={() => handleSubmit()}
+              className="task-add-btn"
+            >
+              +
+            </Button>
+          </div>
         </div>
-        <div className="add-btn-task">
-          <Button
-            type="submit"
-            onClick={() => handleSubmit()}
-            className="task-add-btn"
-          >
-            +
-          </Button>
+        <div className="task-list-section">
+          <table className="task-list">
+            <thead className="task-header">
+              <tr>
+                <th className="priority">Priorité</th>
+                <th className="done">Fait</th>
+                <th className="task-title">Titre</th>
+                <th className="due-in">Date</th>
+                <th className="due-in">Options</th>
+              </tr>
+            </thead>
+            <tbody className="task-body">
+              {taskList.sort(compareByPriority).map((task) => {
+                return (
+                  <TaskLine
+                    task={task}
+                    taskInfo={task}
+                    setFetchData={setFetchData}
+                    fetchData={fetchData}
+                    taskList={taskList}
+                    setTaskList={setTaskList}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
-
-      <ul className="task-list">
-        <div className="task-header">
-          <div className="priority">Priorité</div>
-          <div className="done">Fait</div>
-          <div className="task-title">Titre</div>
-          <div className="due-in">Date</div>
-        </div>
-        {taskList.sort(compareByPriority).map((task) => {
-          return (
-            <TaskLine
-              task={task}
-              taskInfo={task}
-              setFetchData={setFetchData}
-              fetchData={fetchData}
-              taskList={taskList}
-              setTaskList={setTaskList}
-            />
-          );
-        })}
-      </ul>
     </div>
   );
 }
