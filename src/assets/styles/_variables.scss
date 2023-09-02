@@ -3,33 +3,31 @@ $app-primary-font: "Montserrat", sans-serif;
 $font-family-title: "Montserrat", serif;
 
 /* Website Colors */
-$primary-color: #6D4CB4;
-$secondary-color: #FF8F5F;
-$tertiary-color: #2E9935;
+$primary-color: #6d4cb4;
+$secondary-color: #ff8f5f;
+$tertiary-color: #2e9935;
 
 /* Website Mixins */
 
-@mixin center-vertical{
+@mixin center-vertical {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-@mixin center-horizontal{
+@mixin center-horizontal {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@mixin center{
+@mixin center {
   justify-content: center;
   align-items: center;
 }
-
 
 /* Dev */
 @mixin border($color) {
   border: 1px solid $color;
 }
-

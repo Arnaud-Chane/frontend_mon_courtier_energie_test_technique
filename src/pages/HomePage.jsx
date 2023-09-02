@@ -64,9 +64,9 @@ function HomePage() {
   return (
     <div className="HomePage">
       <div className="header">
-        <img src={LogoMCE} alt="Logo MCE" className="logo"/>
+        <img src={LogoMCE} alt="Logo MCE" className="logo" />
         <div className="page-title">Mes tâches de courtier</div>
-        <div class="h_line"></div>
+        <div className="h_line" />
       </div>
       <div className="task-input-ctn">
         <Input

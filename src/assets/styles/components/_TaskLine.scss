@@ -4,29 +4,29 @@
     justify-content: flex-start;
     align-items: center;
 
-    .InputPriority{
+    .InputPriority {
       width: 3rem;
       margin: 0 0.6rem 0 0;
     }
 
-    .checkbox-task-done{
+    .checkbox-task-done {
       margin: 0 5rem 0 2.5rem;
     }
 
-    .task-to-edit{
+    .task-to-edit {
       margin: 0 20rem 0 0;
     }
 
-    .delete-btn-task{
+    .delete-btn-task {
       @include center-horizontal;
       margin: 0.5rem;
     }
 
-    .edit-icon-homepage{
+    .edit-icon-homepage {
       width: 1.3rem;
     }
 
-    .delete-icon-homepage{
+    .delete-icon-homepage {
       width: 1.3rem;
     }
   }

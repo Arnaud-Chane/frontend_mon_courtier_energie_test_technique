@@ -7,7 +7,7 @@
 
   .task-title-ctn {
     margin: 2rem 0 2rem 0;
-    
+
     .task-title-line {
       @include center-horizontal;
 
@@ -27,24 +27,23 @@
     }
   }
 
-  .task-description-ctn{
+  .task-description-ctn {
     margin: 0 0 2rem 0;
     width: 20vw;
   }
 
-  .time-picker{
+  .time-picker {
     margin: 0 0 2rem 0;
   }
 
-  .btn-ctn{
-    .update-btn{
+  .btn-ctn {
+    .update-btn {
       margin: 0 0 1rem 0;
       background-color: $primary-color;
     }
 
-    .update-btn:hover{
+    .update-btn:hover {
       background-color: $secondary-color;
     }
-
   }
 }

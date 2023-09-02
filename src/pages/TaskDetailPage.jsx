@@ -68,7 +68,7 @@ function TaskDetailPage() {
             />
             <img src={EditLogo} alt="Logo MCE" className="edit-icon" />
           </div>
-          <div class="h_line"></div>
+          <div className="h_line" />
         </div>
         <div className="task-description-ctn">
           <TextArea
