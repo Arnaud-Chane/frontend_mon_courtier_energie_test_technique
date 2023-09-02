@@ -28,7 +28,10 @@
     align-items: center;
 
     .task-input-ctn {
-      @include center-horizontal;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
       width: 100%;
 
       .task-input {
@@ -46,8 +49,7 @@
     }
 
     .task-list-section {
-      width: 70%;
-
+      width: 100%;
     }
     
     .task-list {
