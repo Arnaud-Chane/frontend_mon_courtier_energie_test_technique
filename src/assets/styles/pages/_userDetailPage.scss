@@ -1,0 +1,23 @@
+.UserDetailPage {
+  @include center-vertical;
+
+  .page-ctn{
+    .user-pseudo{
+      margin: 0 0 2rem 0;
+
+    }
+
+    .user-email{
+      margin: 0 0 5rem 0;
+    }
+  }
+
+  .btn-user-detail{
+    margin: 0 0 0.3rem 0;
+    background-color: $primary-color;
+  }
+
+  .btn-user-detail:hover{
+    background-color: $secondary-color;
+  }
+}
