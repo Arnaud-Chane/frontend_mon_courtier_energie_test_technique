@@ -30,7 +30,7 @@ function SignUpPage() {
 
   return (
     <div className="SignUpPage">
-      <img src={LogoMCE} alt="LogoMCE icon" />
+      <img className="logo-page" src={LogoMCE} alt="LogoMCE icon" />
 
       <Form
         name="basic"
