@@ -6,7 +6,7 @@ export const UserInfoContext = createContext({});
 function UserInfoProvider({ children }) {
   const [userInfo, setUserInfo] = useState({
     email: "",
-    user_id: "",
+    userId: "",
   });
 
   const contextAllInfoUser = useMemo(
