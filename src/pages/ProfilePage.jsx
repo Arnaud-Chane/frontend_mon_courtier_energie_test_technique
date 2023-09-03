@@ -24,13 +24,17 @@ function ProfilePage() {
           <div className="email">{userInfo.email}</div>
           <div className="h_line_profile" />
         </div>
-        <Button
-          className="btn-profile-to-home"
-          type="primary"
-          onClick={() => navigate("/")}
-        >
-          Revenir à la page d'accueil
-        </Button>
+        <div className="btn-ctn">
+          <div className="btn-back">
+            <Button
+              className="btn-profile-to-home"
+              type="primary"
+              onClick={() => navigate("/")}
+            >
+              Revenir à la page d'accueil
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

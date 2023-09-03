@@ -95,9 +95,13 @@ function SignUpPage() {
             span: 16,
           }}
         >
+                    <div className="btn-ctn">
+
           <Button className="btn-signup" type="primary" htmlType="submit">
             Créer le compte
           </Button>
+          </div>
+
         </Form.Item>
       </Form>
       <Link to="/login">

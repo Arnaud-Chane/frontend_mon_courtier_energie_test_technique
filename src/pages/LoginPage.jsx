@@ -79,9 +79,11 @@ function LoginPage() {
             span: 16,
           }}
         >
-          <Button className="btn-login" type="primary" htmlType="submit">
-            Connexion
-          </Button>
+          <div className="btn-ctn">
+            <Button className="btn-login" type="primary" htmlType="submit">
+              Connexion
+            </Button>
+          </div>
         </Form.Item>
       </Form>
       <Link to="/sign-up">

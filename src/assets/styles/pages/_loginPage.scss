@@ -1,13 +1,15 @@
 .LoginPage {
   @include center-vertical;
 
-  .btn-login {
-    margin: 5rem 0 0 0;
-    background-color: $primary-color;
-  }
+  .btn-ctn {
+    .btn-login {
+      margin: 5rem 0 0 0;
+      background-color: $primary-color;
+    }
 
-  .btn-login:hover {
-    background-color: $secondary-color;
+    .btn-login:hover {
+      background-color: $secondary-color;
+    }
   }
 }
 

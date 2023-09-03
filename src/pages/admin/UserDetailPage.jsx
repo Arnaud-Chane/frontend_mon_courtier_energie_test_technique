@@ -49,6 +49,7 @@ function UserDetailPage() {
     <div className="UserDetailPage">
       <div className="page-ctn">
         <div className="user-pseudo">{userPseudo}</div>
+        <div className="h_line" />
 
         <Form
           name="basic"
@@ -76,22 +77,26 @@ function UserDetailPage() {
             <Input className="user-email" placeholder={userEmail} />
           </Form.Item>
           <Form.Item>
-            <Button
-              className="btn-user-detail"
-              type="primary"
-              htmlType="submit"
-            >
-              Mettre à jour
-            </Button>
+            <div className="btn-ctn">
+              <Button
+                className="btn-user-detail"
+                type="primary"
+                htmlType="submit"
+              >
+                Mettre à jour
+              </Button>
+            </div>
           </Form.Item>
         </Form>
-        <Button
-          className="btn-user-detail"
-          type="primary"
-          onClick={() => navigate("/admin")}
-        >
-          Annuler
-        </Button>
+        <div className="btn-ctn">
+          <Button
+            className="btn-user-detail"
+            type="primary"
+            onClick={() => navigate("/admin")}
+          >
+            Annuler
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -1,51 +1,45 @@
-.ProfilePage{
+.ProfilePage {
   @include center-vertical;
 
-  .page-content{
-
-    .profile-title-ctn{
+  .page-content {
+    .profile-title-ctn {
       margin: 2rem 0;
 
-
-
-      .h_line_title{
+      .h_line_title {
         border-bottom: 3px solid $primary-color;
         margin: auto;
         width: 100%;
       }
     }
 
-    .profile-pseudo-ctn{
+    .profile-pseudo-ctn {
       margin: 5rem 0;
 
-
-
-      .h_line_profile{
+      .h_line_profile {
         border-bottom: 3px solid $tertiary-color;
         margin: auto;
         width: 100%;
       }
     }
 
-    .profile-email-ctn{
+    .profile-email-ctn {
       margin: 5rem 0 10rem 0;
 
-
-
-      .h_line_profile{
+      .h_line_profile {
         border-bottom: 3px solid $tertiary-color;
         margin: auto;
         width: 100%;
       }
     }
 
-    .btn-profile-to-home{
-      background-color: $primary-color;
-    }
+    .btn-ctn {
+      .btn-profile-to-home {
+        background-color: $primary-color;
+      }
 
-    .btn-profile-to-home:hover {
-      background-color: $secondary-color;
+      .btn-profile-to-home:hover {
+        background-color: $secondary-color;
+      }
     }
   }
 }
-
