@@ -12,9 +12,15 @@ function Page403() {
       <div className="content">
         Vous n’êtes pas autorisé.e à voir le contenu de cette page
       </div>
-      <Button type="primary" onClick={() => navigate("/")}>
-        Revenir à la page d'accueil
-      </Button>
+      <div className="btn-ctn">
+        <Button
+          className="btn-back-home"
+          type="primary"
+          onClick={() => navigate("/")}
+        >
+          Revenir à la page d'accueil
+        </Button>
+      </div>
     </div>
   );
 }

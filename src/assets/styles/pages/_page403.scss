@@ -1,0 +1,21 @@
+.Page403 {
+  @include center-vertical;
+  margin: 5rem 0;
+
+  .content{
+    margin: 3rem 0;
+    font-family: $font-family-title;
+    font-size: 2rem;
+  }
+
+  .btn-ctn {
+    .btn-back-home {
+      margin: 0 0 1rem 0;
+      background-color: $primary-color;
+    }
+
+    .btn-back-home:hover {
+      background-color: $secondary-color;
+    }
+  }
+}
