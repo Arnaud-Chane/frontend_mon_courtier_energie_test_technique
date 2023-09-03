@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
+
 import LogoMCE from "../assets/images/logo-mce.png";
 import { UserInfoContext } from "../context/UserRoleContext";
 
@@ -13,17 +15,21 @@ function Navbar() {
   return (
     <div className="Navbar">
       <Link to="/">
-        <img src={LogoMCE} alt="Logo MCE" />
+        <img className="logo-navbar" src={LogoMCE} alt="Logo MCE" />
       </Link>
       {userInfo.role === 1 ? (
-        <Link to="/admin">Liste des membres</Link>
+        <Link to="/admin">
+          <div className="navlink">Liste des membres</div>
+        </Link>
       ) : (
-        <Link to="/profile">Profil</Link>
+        <Link to="/profile">
+          <div className="navlink">Profil</div>
+        </Link>
       )}
       <a href="/">
-        <button type="submit" className="logout" onClick={handleLogout}>
+        <Button type="submit" onClick={() => handleLogout()} className="logout">
           Déconnexion
-        </button>
+        </Button>
       </a>
     </div>
   );

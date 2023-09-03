@@ -1,7 +1,6 @@
 import { Button, Form, Input } from "antd";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import LogoMCE from "../assets/images/logo-mce.png";
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -30,8 +29,6 @@ function SignUpPage() {
 
   return (
     <div className="SignUpPage">
-      <img src={LogoMCE} alt="LogoMCE icon" />
-
       <Form
         name="basic"
         labelCol={{
