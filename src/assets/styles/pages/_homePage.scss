@@ -1,15 +1,15 @@
 .HomePage {
   @include center-vertical;
 
-  .header{
+  .header {
     margin: 2rem 0 2rem 0;
     @include center-vertical;
 
-    .logo{
+    .logo {
       margin: 0 0 2rem 0;
     }
 
-    .page-title{
+    .page-title {
       @include center-horizontal;
       margin: 1rem 0 1rem 0;
     }
@@ -21,49 +21,43 @@
     }
   }
 
-  .task-input-ctn{
+  .task-section {
+    width: 70vw;
     display: flex;
-    width: 70vw;
-    @include center-horizontal;
+    flex-direction: column;
+    align-items: center;
 
-    .task-input{
-      width: 40%;
-      margin: 2rem;
+    .task-input-ctn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+
+      .task-input {
+        width: 40%;
+        margin: 2rem 1rem;
+      }
+
+      .date-picker {
+        margin: 2rem 2rem 4rem 2rem;
+      }
+
+      .task-add-btn {
+        border: 1px solid $primary-color;
+      }
     }
 
-    .date-picker{
-      margin: 2rem 2rem 4rem 2rem;
+    .task-list-section {
+      width: 100%;
     }
 
-    .task-add-btn{
-      border: 1px solid $primary-color;
+    .task-list {
+      width: 100%;
     }
   }
+}
 
-  .task-list{
-    width: 70vw;
-    list-style-type: none;
-    padding: 0 0 0 15rem;
-
-    .task-header{
-      @include center-horizontal;
-      justify-content: flex-start;
-
-      .priority{
-        margin: 0 2.7rem 0 0;
-      }
-
-      .done{
-        margin: 0 4.3rem 0 0;
-      }
-
-      .task-title{
-        margin: 0 21.5rem 0 0;
-      }
-
-      .due-in{
-        margin: 0 20rem 0 0;
-            }
-    }
-  }
+.due-date {
+  margin-right: 1rem;
 }

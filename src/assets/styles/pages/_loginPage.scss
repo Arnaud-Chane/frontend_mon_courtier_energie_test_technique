@@ -1,0 +1,19 @@
+.LoginPage {
+  @include center-vertical;
+
+  .btn-ctn {
+    .btn-login {
+      margin: 5rem 0 0 0;
+      background-color: $primary-color;
+    }
+
+    .btn-login:hover {
+      background-color: $secondary-color;
+    }
+  }
+}
+
+.logo-page {
+  width: 6rem;
+  margin: 4rem 0 6rem 0;
+}

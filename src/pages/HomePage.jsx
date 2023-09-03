@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Button, Input, DatePicker, Space } from "antd";
+import { UserInfoContext } from "../context/UserRoleContext";
 
 import TaskLine from "../components/TaskLine";
-import LogoMCE from "../assets/images/logo-mce.png";
 
 function HomePage() {
   const [taskList, setTaskList] = useState([]);
@@ -11,11 +11,15 @@ function HomePage() {
   const [fetchData, setFetchData] = useState(false);
   const [dueDate, setDueDate] = useState("");
 
+  const { userInfo } = useContext(UserInfoContext);
+
   useEffect(() => {
     const fetchTask = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/tasks`
+          `${import.meta.env.VITE_BACKEND_URL}/api/users/${
+            userInfo.userId
+          }/tasks`
         );
         setTaskList(response.data);
       } catch (error) {
@@ -42,6 +46,7 @@ function HomePage() {
       task_archived: 0,
       task_priority: taskList.length + 1,
       due_date: dueDate,
+      user_id: userInfo.userId,
     };
     try {
       const response = await axios.post(
@@ -64,58 +69,65 @@ function HomePage() {
   return (
     <div className="HomePage">
       <div className="header">
-        <img src={LogoMCE} alt="Logo MCE" className="logo"/>
         <div className="page-title">Mes tâches de courtier</div>
-        <div class="h_line"></div>
+        <div className="h_line" />
       </div>
-      <div className="task-input-ctn">
-        <Input
-          value={taskTitle}
-          placeholder="Ecrire une tâche"
-          onChange={handleOnChange}
-          className="task-input"
-        />
-        <div className="time-picker">
-          <Space direction="vertical" size={12} className="date-picker">
-            À finir avant :
-            <DatePicker
-              onChange={handleTimePicker}
-              placeholder="Choisir une date"
-              className="calendar"
-            />
-          </Space>
+      <div className="task-section">
+        <div className="task-input-ctn">
+          <Input
+            value={taskTitle}
+            placeholder="Ecrire une tâche"
+            onChange={handleOnChange}
+            className="task-input"
+          />
+          <div className="time-picker">
+            <Space direction="vertical" size={12} className="date-picker">
+              À finir avant :
+              <DatePicker
+                onChange={handleTimePicker}
+                placeholder="Choisir une date"
+                className="calendar"
+              />
+            </Space>
+          </div>
+          <div className="add-btn-task">
+            <Button
+              type="submit"
+              onClick={() => handleSubmit()}
+              className="task-add-btn"
+            >
+              +
+            </Button>
+          </div>
         </div>
-        <div className="add-btn-task">
-          <Button
-            type="submit"
-            onClick={() => handleSubmit()}
-            className="task-add-btn"
-          >
-            +
-          </Button>
+        <div className="task-list-section">
+          <table className="task-list">
+            <thead className="task-header">
+              <tr>
+                <th className="priority">Priorité</th>
+                <th className="done">Fait</th>
+                <th className="task-title">Titre</th>
+                <th className="due-in">Date</th>
+                <th className="due-in">Options</th>
+              </tr>
+            </thead>
+            <tbody className="task-body">
+              {taskList.sort(compareByPriority).map((task) => {
+                return (
+                  <TaskLine
+                    task={task}
+                    taskInfo={task}
+                    setFetchData={setFetchData}
+                    fetchData={fetchData}
+                    taskList={taskList}
+                    setTaskList={setTaskList}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
-
-      <ul className="task-list">
-        <div className="task-header">
-          <div className="priority">Priorité</div>
-          <div className="done">Fait</div>
-          <div className="task-title">Titre</div>
-          <div className="due-in">Date</div>
-        </div>
-        {taskList.sort(compareByPriority).map((task) => {
-          return (
-            <TaskLine
-              task={task}
-              taskInfo={task}
-              setFetchData={setFetchData}
-              fetchData={fetchData}
-              taskList={taskList}
-              setTaskList={setTaskList}
-            />
-          );
-        })}
-      </ul>
     </div>
   );
 }

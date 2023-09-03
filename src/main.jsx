@@ -28,6 +28,7 @@ import UserDetailPage from "./pages/admin/UserDetailPage";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Layout />,
     children: [
       {
         index: true,
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <HomePage />,
+        element: (
+          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
+            <HomePage />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",
@@ -47,11 +52,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <ProfilePage />,
+        element: (
+          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
+            <ProfilePage />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/task/:id",
-        element: <TaskDetailPage />,
+        element: (
+          <PrivateRoutes expectedRoles={[userRoles.admin, userRoles.user]}>
+            <TaskDetailPage />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/no-access",

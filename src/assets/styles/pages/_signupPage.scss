@@ -1,0 +1,14 @@
+.SignUpPage {
+  @include center-vertical;
+
+  .btn-ctn {
+    .btn-signup {
+      margin: 5rem 0 0 0;
+      background-color: $primary-color;
+    }
+
+    .btn-signup:hover {
+      background-color: $secondary-color;
+    }
+  }
+}

@@ -27,7 +27,7 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-      <img src={LogoMCE} alt="LogoMCE icon" />
+      <img className="logo-page" src={LogoMCE} alt="LogoMCE icon" />
 
       <Form
         name="basic"
@@ -79,9 +79,11 @@ function LoginPage() {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
-            Connexion
-          </Button>
+          <div className="btn-ctn">
+            <Button className="btn-login" type="primary" htmlType="submit">
+              Connexion
+            </Button>
+          </div>
         </Form.Item>
       </Form>
       <Link to="/sign-up">
