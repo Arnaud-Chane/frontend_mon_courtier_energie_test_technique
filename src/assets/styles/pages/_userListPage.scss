@@ -1,0 +1,11 @@
+.UserListPage {
+  @include center-horizontal;
+  table{
+    border-spacing: 2rem; 
+
+  }
+}
+
+.del-icon, .edit-icon {
+  width: 1.5rem;
+}
