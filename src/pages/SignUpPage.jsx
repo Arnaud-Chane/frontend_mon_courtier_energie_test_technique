@@ -95,7 +95,7 @@ function SignUpPage() {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button className="btn-signup" type="primary" htmlType="submit">
             Créer le compte
           </Button>
         </Form.Item>
