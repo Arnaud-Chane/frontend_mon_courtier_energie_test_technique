@@ -10,9 +10,15 @@ function Page404() {
     <div className="Page404">
       <img src={Image404} alt="404 error icon" />
       <div className="content">Page non trouvée </div>
-      <Button type="primary" onClick={() => navigate("/")}>
-        Revenir à la page d'accueil
-      </Button>
+      <div className="btn-ctn">
+        <Button
+          className="btn-back-home"
+          type="primary"
+          onClick={() => navigate("/")}
+        >
+          Revenir à la page d'accueil
+        </Button>
+      </div>
     </div>
   );
 }
