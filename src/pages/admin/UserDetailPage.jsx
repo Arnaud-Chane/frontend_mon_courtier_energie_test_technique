@@ -23,8 +23,8 @@ function UserDetailPage() {
 
   const onSubmit = async (values) => {
     const body = {
-      pseudo: values.pseudo,
-      email: values.email,
+      pseudo: values.pseudo === undefined ? userPseudo : values.pseudo,
+      email: values.email === undefined ? userEmail : values.email,
       user_id: id,
       is_admin: 0,
     };
@@ -47,42 +47,52 @@ function UserDetailPage() {
 
   return (
     <div className="UserDetailPage">
-      <div className="user-pseudo">{userPseudo}</div>
+      <div className="page-ctn">
+        <div className="user-pseudo">{userPseudo}</div>
 
-      <Form
-        name="basic"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
-        style={{
-          maxWidth: 600,
-        }}
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onSubmit}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item label="" name="pseudo">
-          <Input placeholder={userPseudo} />
-        </Form.Item>
+        <Form
+          name="basic"
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          style={{
+            maxWidth: 600,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onSubmit}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item label="" name="pseudo">
+            <Input placeholder={userPseudo} />
+          </Form.Item>
 
-        <Form.Item label="" name="email">
-          <Input placeholder={userEmail} />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Mettre à jour
-          </Button>
-        </Form.Item>
-      </Form>
-      <Button type="primary" onClick={() => navigate("/admin")}>
-        Annuler
-      </Button>
+          <Form.Item label="" name="email">
+            <Input className="user-email" placeholder={userEmail} />
+          </Form.Item>
+          <Form.Item>
+            <Button
+              className="btn-user-detail"
+              type="primary"
+              htmlType="submit"
+            >
+              Mettre à jour
+            </Button>
+          </Form.Item>
+        </Form>
+        <Button
+          className="btn-user-detail"
+          type="primary"
+          onClick={() => navigate("/admin")}
+        >
+          Annuler
+        </Button>
+      </div>
     </div>
   );
 }
