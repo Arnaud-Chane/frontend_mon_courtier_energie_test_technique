@@ -68,11 +68,11 @@ function UserDetailPage() {
         autoComplete="off"
       >
         <Form.Item label="" name="pseudo">
-          <Input defaultValue={userPseudo} />
+          <Input placeholder={userPseudo} />
         </Form.Item>
 
         <Form.Item label="" name="email">
-          <Input defaultValue={userEmail} />
+          <Input placeholder={userEmail} />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">

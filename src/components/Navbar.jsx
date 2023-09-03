@@ -1,15 +1,13 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LogoMCE from "../assets/images/logo-mce.png";
 import { UserInfoContext } from "../context/UserRoleContext";
 
 function Navbar() {
-  const navigate = useNavigate();
   const { userInfo } = useContext(UserInfoContext);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
   };
 
   return (
@@ -22,9 +20,11 @@ function Navbar() {
       ) : (
         <Link to="/profile">Profil</Link>
       )}
-      <button type="submit" className="logout" onClick={handleLogout}>
-        Déconnexion
-      </button>
+      <a href="/">
+        <button type="submit" className="logout" onClick={handleLogout}>
+          Déconnexion
+        </button>
+      </a>
     </div>
   );
 }
