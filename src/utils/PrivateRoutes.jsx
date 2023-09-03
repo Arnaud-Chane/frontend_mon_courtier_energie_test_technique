@@ -13,38 +13,29 @@ function PrivateRoutes({ expectedRoles, children }) {
 
   useEffect(() => {
     const fetchUserInformation = async () => {
-      if ("token" in localStorage) {
-        try {
-          const token = localStorage.getItem("token");
-          const response = await axios({
-            method: "POST",
-            url: `${import.meta.env.VITE_BACKEND_URL}/api/verify-token`,
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          if (response.status === 200) {
-            const userInfo = response.data;
-            setRole(userInfo.role);
-            setUserInfo(userInfo);
-          } else {
-            console.error("User information not found");
-          }
-        } catch (error) {
-          console.error("Can not get user data", error);
-          navigate("/login");
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios({
+          method: "POST",
+          url: `${import.meta.env.VITE_BACKEND_URL}/api/verify-token`,
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (response.status === 200) {
+          const userInfo = response.data;
+          setRole(userInfo.role);
+          setUserInfo(userInfo);
+        } else {
+          console.error("User information not found");
         }
-      } else {
+      } catch (error) {
+        console.error("Can not get user data", error);
         navigate("/login");
       }
     };
     fetchUserInformation();
   }, []);
 
-  if (role !== undefined) {
-    if (!expectedRoles.includes(role)) {
-      navigate("/no-access");
-    }
-  }
-  return expectedRoles.includes(role) ? children : null;
+  return expectedRoles.includes(role) ? children : navigate("/no-access");
 }
 
 PrivateRoutes.propTypes = {

@@ -2,7 +2,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Input, Button, DatePicker, Space } from "antd";
-import LogoMCE from "../assets/images/logo-mce.png";
 import EditLogo from "../assets/images/edit-icon.svg";
 
 function TaskDetailPage() {
@@ -55,9 +54,6 @@ function TaskDetailPage() {
 
   return (
     <div className="TaskDetailPage">
-      <Link to="/">
-        <img src={LogoMCE} alt="Logo MCE" className="logo" />
-      </Link>
       <div className="page-content">
         <div className="task-title-ctn">
           <div className="task-title-line">

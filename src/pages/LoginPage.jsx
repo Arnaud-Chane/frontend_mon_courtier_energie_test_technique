@@ -1,7 +1,6 @@
 import { Button, Form, Input } from "antd";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import LogoMCE from "../assets/images/logo-mce.png";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -27,8 +26,6 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-      <img src={LogoMCE} alt="LogoMCE icon" />
-
       <Form
         name="basic"
         labelCol={{
