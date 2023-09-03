@@ -1,10 +1,10 @@
 .task {
-
-  td div , td label{
+  td div,
+  td label {
     display: flex;
     @include center;
   }
-  
+
   .InputPriority input {
     width: 3rem;
   }
